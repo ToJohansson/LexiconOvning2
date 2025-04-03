@@ -8,6 +8,7 @@ string mainMenuGreeting = "Welcome to the main menu! \n" +
     "\n" +
     "### MAIN MENU ### \n" +
     "1: Cinema. \n" +
+    "2: Repeat message." +
     "0: Exit program.";
 
 bool isRunning = true;
