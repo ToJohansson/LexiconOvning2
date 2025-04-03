@@ -8,7 +8,8 @@ string mainMenuGreeting = "Welcome to the main menu! \n" +
     "\n" +
     "### MAIN MENU ### \n" +
     "1: Cinema. \n" +
-    "2: Repeat message." +
+    "2: Repeat message.\n" +
+    "3: The third word\n" +
     "0: Exit program.";
 
 bool isRunning = true;
@@ -25,6 +26,9 @@ while (isRunning)
             break;
         case "2":
             Repeat.Menu();
+            break;
+        case "3":
+            ThirdWord.Run();
             break;
         case "0":
             Console.WriteLine("Exiting program...");
