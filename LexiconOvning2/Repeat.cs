@@ -82,7 +82,7 @@ internal class Repeat
             Console.ReadLine();
             return;
         }
-        // Check if the repeatCount is greater than 0
+        // creates a list of strings with the repeated message
         string result = string.Join(", ", Enumerable.Range(1, (int)repeatCount).Select(i => $"{i}. {input}"));
         Console.WriteLine(result);
         Console.ReadLine();
