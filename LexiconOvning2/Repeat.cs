@@ -8,7 +8,9 @@ namespace LexiconOvning2;
 
 internal class Repeat
 {
-    // This class contains methods to repeat a message a specified number of times.
+    /// <summary>
+    /// This class contains methods to repeat a message a specified number of times.
+    /// </summary>
     public static void Menu()
     {
         bool isRunning = true;
@@ -40,6 +42,9 @@ internal class Repeat
         } while (isRunning);
     }
 
+    /// <summary>
+    /// Repeats the user's input text 10 times.
+    /// </summary>
     private static void RepeatText()
     {
         Console.Write("What message do you want to repeat?\n" +
@@ -58,6 +63,9 @@ internal class Repeat
         }
         Console.ReadLine();
     }
+    /// <summary>
+    /// Repeats the user's input text a specified number of times.
+    /// </summary>
     private static void DynamicRepeat()
     {
         Console.Write("What message do you want to repeat?\n" +
