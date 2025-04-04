@@ -71,26 +71,20 @@ internal class Repeat
         Console.Write("What message do you want to repeat?\n" +
                         "Your text: ");
         string input = Console.ReadLine();
+
         Console.Write("How many times do you want to repeat it? \n" +
             "Your number: ");
         string number = Console.ReadLine();
-        if (!int.TryParse(number, out int repeatCount))
+
+        if (!uint.TryParse(number, out uint repeatCount))
         {
             Console.WriteLine("Invalid input. Please enter a whole number.");
             Console.ReadLine();
             return;
         }
-        for (int i = 0; i < repeatCount; i++)
-        {
-            if (i == (repeatCount - 1))
-            {
-                Console.Write((i + 1) + ". " + input);
-            }
-            else
-            {
-                Console.Write((i + 1) + ". " + input + ", ");
-            }
-        }
+        // Check if the repeatCount is greater than 0
+        string result = string.Join(", ", Enumerable.Range(1, (int)repeatCount).Select(i => $"{i}. {input}"));
+        Console.WriteLine(result);
         Console.ReadLine();
     }
 
