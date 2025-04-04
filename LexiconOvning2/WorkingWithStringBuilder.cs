@@ -8,97 +8,73 @@ namespace LexiconOvning2
 {
     internal class WorkingWithStringBuilder
     {
-        /*
-        This class contains methods to demonstrate the use of StringBuilder for string manipulation.
-        It includes methods to create a StringBuilder, append text, and display the result.
-        It will time the process of appending text to a StringBuilder and a string.
-        And compare the performance of both methods.
-        Who will win! 
-         */
-        public static void Menu()
+        public static void Run()
         {
-            // menu for the stringbuilder function
-            bool isRunning = true;
-            do
-            {
-                Console.Clear();
-                Console.WriteLine("### WORKING WITH STRINGBUILDER ### \n" +
-                    "1: StringBuilder vs String concatination <---\n" +
-                    "0: Go back to main menu");
-                string option = Console.ReadLine();
-                switch (option)
-                {
-                    case "1":
-                        ComparePerformance();
-                        break;
-
-                    case "0":
-                        Console.WriteLine("Going back to main menu...");
-                        isRunning = false;
-                        break;
-                    default:
-                        Console.WriteLine("Wrong input, please try again.");
-                        break;
-                }
-            } while (isRunning);
+            ComparePerformance();
         }
-
+        /// <summary>
+        /// This method compares the performance of StringBuilder and string concatenation by measuring the time taken to append text to each.
+        /// </summary>
         private static void ComparePerformance()
         {
             Console.Clear();
-            // stringbuilder vs string performance comparison
-            // create a stringbuilder
+            const double TO_SEC = 1000; // Conversion factor from milliseconds to seconds
+            const int ITERATIONS = 150000; // Number of iterations for the test
+            Console.WriteLine("### COMPARING STRINGBUILDER AND STRING CONCATENATION ###\n" +
+                "This test will compare the performance of StringBuilder and string concatenation.\n" +
+                "It will measure the time taken to append text to each.\n" +
+                $"Iteration is now set to: {ITERATIONS:n0} times.\n");
+            // Create a StringBuilder and a string to compare
             StringBuilder sb = new StringBuilder();
             sb.Append("start");
-            // create a string
+
             string str = "start";
-            // create a stopwatch
+
+            // Create a stopwatch to measure elapsed time
             System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-            // start the stopwatch
+
+            // StringBuilder performance
             Console.WriteLine("StringBuilder: Starting the stopwatch...");
             stopwatch.Start();
-            // append text to stringbuilder
-            for (int i = 0; i < 100000; i++)
+
+            // Append text to StringBuilder
+            for (int i = 0; i < ITERATIONS; i++)
             {
-                if (i == 50000)
-                {
-                    Console.WriteLine("\n" +
-                        "Half way and pretty fast!\n");
-                }
                 sb.Append(i);
             }
+
             sb.Append("end");
-            // stop the stopwatch
             stopwatch.Stop();
             var sbTime = stopwatch.ElapsedMilliseconds;
             Console.WriteLine($"Time it took to append text to StringBuilder: {sbTime} ms\n");
-            // Restart the stopwatch
-            Console.WriteLine("String concatination: Starting the stopwatch...");
+
+            // Reset stopwatch and measure string concatenation performance
+            Console.WriteLine("String concatenation: Starting the stopwatch...");
             stopwatch.Restart();
-            // append text to string
-            for (int i = 0; i < 100000; i++)
+
+            // Append text to string using string concatenation
+            for (int i = 0; i < ITERATIONS; i++)
             {
-                if (i == 50000)
-                {
-                    Console.WriteLine("\n" +
-                        "Working....Working....\n" +
-                        "Just wait a bit longer....\n" +
-                        "Almost done....\n");
-                }
-                str += i;
+                str += i;  // Inefficient string concatenation
             }
+
             str += "end";
-            // stop the stopwatch
             stopwatch.Stop();
             var strTime = stopwatch.ElapsedMilliseconds;
-            // print the time it took to append text to string
-            Console.WriteLine($"Time it took to append text to string: {strTime} ms\n");
-            Console.WriteLine("*** FINAL RESULT ***");
 
-            Console.WriteLine($"StringBuilder : {sbTime}ms");
-            Console.WriteLine($"String: {strTime}ms");
+            // Print the time taken for string concatenation
+            Console.WriteLine($"Time it took to append text to string: {strTime} ms\n");
+
+            double sbTimeSec = sbTime / TO_SEC;
+            double strTimeSec = strTime / TO_SEC;
+            // Final result comparison
+            Console.WriteLine("*** FINAL RESULT ***");
+            Console.WriteLine($"StringBuilder: {sbTimeSec:f4} sek");
+            Console.WriteLine($"String concatenation: {strTimeSec:f4} sek");
+
             Console.ReadLine();
         }
+
 
 
     }

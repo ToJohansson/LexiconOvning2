@@ -45,7 +45,7 @@ internal class MainMenu
                     ThirdWord.Run();
                     break;
                 case "4":
-                    WorkingWithStringBuilder.Menu();
+                    WorkingWithStringBuilder.Run();
                     break;
                 case "0":
                     Console.WriteLine("Exiting program...");
