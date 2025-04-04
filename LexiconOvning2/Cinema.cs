@@ -8,7 +8,20 @@ namespace LexiconOvning2;
 
 internal class Cinema
 {
-    // This class contains methods to check the price for a single person and a group of people based on their ages.
+    /// <summary>
+    /// /// Constants for age and price categories.
+    /// </summary>
+    private const int MIN_AGE = 5;
+    private const int MAX_AGE = 100;
+    private const int YOUTH_AGE = 20;
+    private const int SENIOR_AGE = 64;
+    private const int YOUTH_PRICE = 80;
+    private const int SENIOR_PRICE = 90;
+    private const int STANDARD_PRICE = 120;
+
+    /// <summary>
+    /// Displays the cinema menu and allows the user to choose between checking the price for a single person or a group.
+    /// </summary>
     public static void Menu()
     {
         bool isRunning = true;
@@ -42,7 +55,9 @@ internal class Cinema
     }
 
 
-    // Checks the price for a single person based on their age.
+    /// <summary>
+    /// Checks the price for a single person based on their age.
+    /// </summary>
     private static void PriceForOnePerson()
     {
         bool isRunning = true;
@@ -50,27 +65,27 @@ internal class Cinema
         do
         {
             Console.Clear();
-            Console.Write("### CINEMA ### \n" +
+            Console.Write("### CINEMA SINGLE ### \n" +
                 "Check price for a single person. \n" +
                 "Please enter your age: ");
             string input = Console.ReadLine();
             if (uint.TryParse(input, out uint age))
             {
-                if (age < 5 || age > 100)
+                if (age < MIN_AGE || age > MAX_AGE)
                 {
                     Console.WriteLine("You are free to enter the cinema!");
                 }
-                else if (age < 20)
+                else if (age < YOUTH_AGE)
                 {
-                    Console.WriteLine("Youth price: 80kr");
+                    Console.WriteLine($"Youth price: {YOUTH_PRICE}kr");
                 }
-                else if (age > 64)
+                else if (age > SENIOR_AGE)
                 {
-                    Console.WriteLine("Senior price: 90kr");
+                    Console.WriteLine($"Senior price: {SENIOR_PRICE}kr");
                 }
                 else
                 {
-                    Console.WriteLine("Standard price: 120kr");
+                    Console.WriteLine($"Standard price: {STANDARD_PRICE}kr");
                 }
                 Console.ReadLine();
                 isRunning = false;
@@ -87,14 +102,16 @@ internal class Cinema
     }
 
 
-    // Checks the total price for a group of people based on their ages.
+    /// <summary>
+    /// Checks the total price for a group of people based on their ages.
+    /// </summary>
     private static void PriceForGroup()
     {
         bool isRunning = true;
         do
         {
             Console.Clear();
-            Console.Write("### CINEMA ### \n" +
+            Console.Write("### CINEMA GROUP ### \n" +
                 "Check price for a group. \n" +
                 "How many people are in your group? ");
             string input = Console.ReadLine();
@@ -107,21 +124,21 @@ internal class Cinema
                     string ageInput = Console.ReadLine();
                     if (uint.TryParse(ageInput, out uint age))
                     {
-                        if (age < 5 || age > 100)
+                        if (age < MIN_AGE || age > MAX_AGE)
                         {
                             totalPrice += 0;
                         }
-                        else if (age < 20)
+                        else if (age < YOUTH_AGE)
                         {
-                            totalPrice += 80;
+                            totalPrice += YOUTH_PRICE;
                         }
-                        else if (age > 64)
+                        else if (age > SENIOR_AGE)
                         {
-                            totalPrice += 90;
+                            totalPrice += SENIOR_PRICE;
                         }
                         else
                         {
-                            totalPrice += 120;
+                            totalPrice += STANDARD_PRICE;
                         }
                     }
                     else
